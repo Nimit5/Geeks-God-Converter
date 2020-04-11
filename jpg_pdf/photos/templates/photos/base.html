@@ -4,26 +4,24 @@
   <form method="post" action="{% url 'photos:clear_database' %}">
     {% csrf_token %}
     <input type="hidden" name="next" value="{{ request.path }}">
-    <button type="submit" class="btn btn-danger pull-right">
-      <span class="glyphicon glyphicon-trash"></span> RESET
+    <button type="submit" class="btn btn-danger btn-lg pull-right">
+      <span class="glyphicon glyphicon-trash"></span> <b>RESET
     </button>
   </form>
+<div style="font=20;">
   <h1 class="page-header">
-    Photos
+    UPLOAD OPTIONS
     <small>/ {% block title %}{% endblock %}</small>
   </h1>
-  <div class="row">
+  <div class="row" style="font-size: large;">
     <div class="col-md-3">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">Examples</h3>
+          <h3 class="panel-title">Upload Option</h3>
         </div>
         <div class="list-group">
-          <a href="{% url 'photos:basic_upload' %}" class="list-group-item{% if request.path == '/photos/basic-upload/' %} active{% endif %}">
-            Basic Upload
-          </a>
           <a href="{% url 'photos:progress_bar_upload' %}" class="list-group-item{% if request.path == '/photos/progress-bar-upload/' %} active{% endif %}">
-            Progress Bar Upload
+             Normal Upload
           </a>
           <a href="{% url 'photos:drag_and_drop_upload' %}" class="list-group-item{% if request.path == '/photos/drag-and-drop-upload/' %} active{% endif %}">
             Drag and Drop Upload
@@ -36,11 +34,12 @@
       {% endblock %}
     </div>
   </div>
+</div>
 <form method="post" action="{% url 'photos:conver' %}">
     {% csrf_token %}
     <input type="hidden" name="next" value="{{ request.path }}">
-    <button type="submit" class="btn btn-success pull-right">
-      <span class="glyphicon "></span> CONVERT
+    <button type="submit" class="btn btn-success btn-lg pull-right">
+      <span class="glyphicon "></span> <b>CONVERT
     </button>
   </form>
 {% endblock %}

@@ -1,7 +1,7 @@
 import time
 
 from django.shortcuts import render, redirect
-from django.http import JsonResponse
+from django.http import JsonResponse,FileResponse,Http404
 from django.views import View
 
 from .forms import PhotoForm
@@ -68,6 +68,16 @@ def conver(request):
         l.append(photo.file)
 
     print(l)
-    with open("output.pdf", "wb") as f:
+    with open("media/output.pdf", "wb") as f:
         f.write(img2pdf.convert([i for i in l ]))
-    return redirect(request.POST.get('next'))
+        try:
+            return FileResponse(open('media/output.pdf', 'rb'), content_type='application/pdf')
+        except FileNotFoundError:
+            raise Http404()
+
+def display(request):
+    try:
+        clear_database(request)
+        render(request,'photos/output.html', FileResponse(open('output.pdf', 'rb'), content_type='application/pdf'))
+    except FileNotFoundError:
+        raise Http404()

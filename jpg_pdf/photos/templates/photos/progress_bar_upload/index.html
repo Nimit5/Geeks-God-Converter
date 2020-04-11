@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block title %}Progress Bar Upload{% endblock %}
+{% block title %}JPG to PDF - Converter{% endblock %}
 
 {% block javascript %}
   {# JQUERY FILE UPLOAD SCRIPTS #}
@@ -15,20 +15,20 @@
 {% endblock %}
 
 {% block photos_content %}
-  <div style="margin-bottom: 20px;">
-    <button type="button" class="btn btn-primary js-upload-photos">
-      <span class="glyphicon glyphicon-cloud-upload"></span> Upload photos
+  <div style="margin-bottom: 20px; font-size: xx-large;">
+    <button type="button" class="btn btn-primary btn-lg js-upload-photos">
+      <span class="glyphicon glyphicon-cloud-upload"></span> <b>Upload photos
     </button>
     <input id="fileupload" type="file" name="file" multiple
-           style="display: none;"
+           style="display: none; "
            data-url="{% url 'photos:progress_bar_upload' %}"
            data-form-data='{"csrfmiddlewaretoken": "{{ csrf_token }}"}'>
   </div>
-
-  <table id="gallery" class="table table-bordered">
+<p class="text-danger">*Enter only jpg images</p>
+  <table id="gallery" class="table table-bordered" style="font-size:large;">
     <thead>
       <tr>
-        <th>Photo</th>
+        <th>Selected Photos</th>
       </tr>
     </thead>
     <tbody>
