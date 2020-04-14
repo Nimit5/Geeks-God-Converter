@@ -13,7 +13,7 @@ import img2pdf
 class BasicUploadView(View):
     def get(self, request):
         photos_list = Photo.objects.all()
-        return render(self.request, 'photos/basic_upload/index.html', {'photos': photos_list})
+        return render(self.request, 'photos/progress_bar_upload/index.html', {'photos': photos_list})
 
     def post(self, request):
         form = PhotoForm(self.request.POST, self.request.FILES)
@@ -68,6 +68,8 @@ def conver(request):
         l.append(photo.file)
 
     print(l)
+    if(len(l)==0):
+        raise Http404()
     with open("media/output.pdf", "wb") as f:
         f.write(img2pdf.convert([i for i in l ]))
         try:

@@ -1,31 +1,43 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}Geeks God Converter{% endblock %}</title>
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <style type="text/css">
       .page-header {
         margin-top: 0;
       }
+
+
     </style>
-  </head>
-  <body>
-    {% include 'includes/header.html' %}
-    <div class="container">
-      {% block content %}
-      {% endblock %}
-    </div>
-    <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    {% block javascript %}
+</head>
+<body>
+{% include 'includes/header.html' %}
+<div class="container">
+    {% block content %}
     {% endblock %}
-  </body>
+</div>
+<script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+{% block javascript %}
+{% endblock %}
+
+<div class="footer" style="margin-top:8%; font-size:large; border:3px solid #E5322D; background-color: #E5322D;">
+    <div class="footer-copyright text-center py-3">© <a style="color: darkgreen;" href="https://www.geeksgod.com/"
+                                                        target="_blank">
+        GeeksGod</a> Copyright
+        <script>document.write(new Date().getUTCFullYear());</script>
+        <span>Developed By <a style="color: darkgreen;" href="https://www.linkedin.com/in/nimit-jain-a9502917b"
+                              target="_blank">Nimit Jain</a></span>
+    </div>
+</div>
+</body>
 </html>
